@@ -1,0 +1,167 @@
+{
+  "source": "art/source/sheet.png (1536×1024, provided by Bella Chen)",
+  "pipeline": "scripts/cut_sheet.py",
+  "note": "Cats are upscaled about 2.9× from the sheet; replace with higher-resolution originals when available.",
+  "assets": [
+    {
+      "id": "british",
+      "master": "art/png/british.png",
+      "web": "public/cats/british.webp",
+      "thumb": "public/cats/british-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "orange",
+      "master": "art/png/orange.png",
+      "web": "public/cats/orange.webp",
+      "thumb": "public/cats/orange-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "siamese",
+      "master": "art/png/siamese.png",
+      "web": "public/cats/siamese.webp",
+      "thumb": "public/cats/siamese-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "black",
+      "master": "art/png/black.png",
+      "web": "public/cats/black.webp",
+      "thumb": "public/cats/black-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "ragdoll",
+      "master": "art/png/ragdoll.png",
+      "web": "public/cats/ragdoll.webp",
+      "thumb": "public/cats/ragdoll-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "bengal",
+      "master": "art/png/bengal.png",
+      "web": "public/cats/bengal.webp",
+      "thumb": "public/cats/bengal-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "maine",
+      "master": "art/png/maine.png",
+      "web": "public/cats/maine.webp",
+      "thumb": "public/cats/maine-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "russian",
+      "master": "art/png/russian.png",
+      "web": "public/cats/russian.webp",
+      "thumb": "public/cats/russian-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "calico",
+      "master": "art/png/calico.png",
+      "web": "public/cats/calico.webp",
+      "thumb": "public/cats/calico-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "tabby",
+      "master": "art/png/tabby.png",
+      "web": "public/cats/tabby.webp",
+      "thumb": "public/cats/tabby-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "white",
+      "master": "art/png/white.png",
+      "web": "public/cats/white.webp",
+      "thumb": "public/cats/white-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "norwegian",
+      "master": "art/png/norwegian.png",
+      "web": "public/cats/norwegian.webp",
+      "thumb": "public/cats/norwegian-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "sphynx",
+      "master": "art/png/sphynx.png",
+      "web": "public/cats/sphynx.webp",
+      "thumb": "public/cats/sphynx-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "abyssinian",
+      "master": "art/png/abyssinian.png",
+      "web": "public/cats/abyssinian.webp",
+      "thumb": "public/cats/abyssinian-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "persian",
+      "master": "art/png/persian.png",
+      "web": "public/cats/persian.webp",
+      "thumb": "public/cats/persian-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "id": "tuxedo",
+      "master": "art/png/tuxedo.png",
+      "web": "public/cats/tuxedo.webp",
+      "thumb": "public/cats/tuxedo-480.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    }
+  ]
+}
