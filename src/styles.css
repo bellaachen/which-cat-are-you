@@ -236,6 +236,7 @@ blockquote {
   width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 20px; color: var(--ink);
   background: var(--paper); border: 1.5px solid var(--ink); border-radius: 18px;
 }
+.share-dialog:focus { outline: none; }
 .share-dialog h2 { padding-right: 40px; }
 .dialog-close {
   position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; padding: 10px;

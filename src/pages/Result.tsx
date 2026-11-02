@@ -64,6 +64,8 @@ export default function Result() {
   const makeImage = async () => {
     setShare({ status: 'making' });
     dialog.current?.showModal();
+    // 把焦點放在彈窗本身，開啟時叉叉不會出現焦點外框；鍵盤按 Tab 時才會顯示
+    dialog.current?.focus();
     try {
       const blob = await renderShareCard(cat, locale);
       setShare({ status: 'ready', url: URL.createObjectURL(blob) });
@@ -112,7 +114,7 @@ export default function Result() {
         <span className="visually-hidden" aria-live="polite">{copied ? t('copied') : ''}</span>
       </section>
       <dialog
-        ref={dialog} className="share-dialog" aria-labelledby="share-title"
+        ref={dialog} className="share-dialog" aria-labelledby="share-title" tabIndex={-1}
         onClick={(e) => { if (e.target === dialog.current) dialog.current?.close(); }}
       >
         <button type="button" className="dialog-close" aria-label={t('close')} onClick={() => dialog.current?.close()}>
