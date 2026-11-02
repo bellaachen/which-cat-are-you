@@ -26,7 +26,7 @@ for (const a of CATS) for (const b of CATS) if (a.id !== b.id) offDiagonal.push(
 const MIN = Math.min(...offDiagonal);
 const MAX = Math.max(...offDiagonal);
 
-/** 娛樂性合拍指數：把角色間的原始值線性換算到 30–95。 */
+/** 娛樂性速配指數：把角色間的原始值線性換算到 30–95。 */
 export function compatScore(a: CatId, b: CatId): number {
   const va = CATS.find((c) => c.id === a)!.vector;
   const vb = CATS.find((c) => c.id === b)!.vector;

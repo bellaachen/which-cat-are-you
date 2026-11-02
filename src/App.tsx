@@ -51,8 +51,7 @@ export default function App() {
         </Routes>
       </main>
       <footer className="site-footer">
-        <span>{t('footer')}</span>
-        <span>Bella Chen</span>
+        {t('footer')}
       </footer>
     </>
   );

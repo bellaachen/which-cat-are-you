@@ -62,7 +62,6 @@ export default function CatDetail() {
         <Link className="button primary" to="/quiz">{t('takeQuiz')}</Link>
         <Link className="button" to="/cats">{t('backToCats')}</Link>
       </div>
-      <p className="disclaimer">{t('entertainment')}</p>
     </article>
   );
 }

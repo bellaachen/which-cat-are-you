@@ -111,7 +111,6 @@ export default function Result() {
         <Link className="button" to="/cats">{t('viewCats')}</Link>
         <span className="visually-hidden" aria-live="polite">{copied ? t('copied') : ''}</span>
       </section>
-      <p className="disclaimer">{t('entertainment')}</p>
       <dialog ref={dialog} className="share-dialog" aria-labelledby="share-title">
         <h2 id="share-title">{t('shareTitle')}</h2>
         {share?.status === 'making' && <p role="status">{t('shareMaking')}</p>}

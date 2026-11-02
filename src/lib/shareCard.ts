@@ -80,7 +80,7 @@ export async function renderShareCard(cat: Cat, locale: Locale): Promise<Blob> {
   const title = cat.title[locale];
   const quote = cat.quote[locale];
   const traits = cat.traits.map((x) => x[locale]);
-  await ensureFonts([name, title, quote, ...traits, UI[locale].shareUrlLabel, SITE, UI[locale].footer].join(''));
+  await ensureFonts([name, title, quote, ...traits, UI[locale].shareUrlLabel, SITE].join(''));
 
   const img = await loadImage(`${import.meta.env.BASE_URL}${cat.image.src}.webp`);
   const canvas = document.createElement('canvas');
