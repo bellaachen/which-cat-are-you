@@ -199,7 +199,7 @@ export const CATS: Cat[] = [
     vector: v(40, 25, 5, 95, 15, 95),
     name: l('俄羅斯藍貓', 'Russian Blue'),
     title: l('冷靜策略家', 'The Cool Strategist'),
-    quote: l('我沒有生氣，我只是更新了風險評估。', "I'm not angry. I've simply updated my risk assessment."),
+    quote: l('我沒有生氣，我只是在想解決方案。', "I'm not angry. I'm just working out a solution."),
     description: l(
       '你的旅行有試算表，分頁包含交通、預算和下雨備案。你對事情的第一反應是拆解，不是抱怨，別人崩潰時你已經列好三個方案。你不喜歡突然被改規則，也不太表露情緒，有人以為你沒感覺，其實你只是把感覺歸檔了。和你相處，請把事情講清楚、守時，別用「隨便啦」敷衍你。給你時間想，你的答案通常值得等。',
       'Your holidays have a spreadsheet with tabs for transport, budget and rain plans. Your first response is to break things down, so while others spiral you already have three options. You dislike sudden rule changes and rarely show emotion. People think you feel nothing; you have just filed it. Be clear, be punctual, and never fob you off with "whatever." Give you time, and your answer is worth the wait.',
@@ -251,7 +251,7 @@ export const CATS: Cat[] = [
     vector: v(70, 80, 55, 50, 15, 90),
     name: l('虎斑米克斯', 'Tabby Mix'),
     title: l('街頭生存王', 'The Street Survivor'),
-    quote: l('沒有路就走巷子，巷子也沒有就翻牆。', 'No road? Take the alley. No alley? Over the wall.'),
+    quote: l('沒有大路就走小巷，沒有小巷就翻牆。', 'No main road? Take the alley. No alley? Over the wall.'),
     description: l(
       '不管被丟到哪個環境，你三天內就知道哪家便當划算、哪個同事能幫忙、哪條路不會塞。你不講究條件，看的是這件事划不划算、做不做得到。你和誰都聊得起來，卻很少依賴別人，出事時已經想好怎麼自己解決。你看過不少場面，所以不太容易被唬。和你相處要講實際的，空話對你沒用，能一起把事做成的人，你會記得。',
       'Drop you anywhere and within three days you know the best-value lunch, the helpful colleague and the road without traffic. You care less about conditions than whether something is worth it and doable. You can talk to anyone but rarely rely on anyone, and when trouble hits you already have your own way out. You have seen enough not to be fooled easily. Skip the empty talk. You remember people who actually get things done with you.',
