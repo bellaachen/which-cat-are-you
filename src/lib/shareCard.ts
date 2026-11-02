@@ -2,6 +2,7 @@ import type { Cat, Locale } from '../data/types';
 import { CAT_BY_ID } from '../data/cats';
 import { PAIRINGS } from '../data/pairings';
 import { UI } from '../i18n';
+import { compatDetail } from './compat';
 
 const W = 1080;
 const H = 1350;
@@ -88,18 +89,36 @@ function chip(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h:
 const MARGIN = 76;
 const INK_LINE = 'rgba(64,59,53,0.28)';
 
-/** 分享圖的貓咪配對欄：只放圖、名稱和稱號。 */
-function drawPairTile(ctx: CanvasRenderingContext2D, img: HTMLImageElement, x: number, y: number, name: string, title: string, locale: Locale) {
-  const w = 214;
-  ctx.drawImage(img, 0, 96, 480, 368, x, y, w, 164);
-  const nameFit = fitLines(ctx, name, 700, 26, 20, w, 1, locale);
+/** 分享圖的貓咪配對欄：圖、名稱、稱號，以及速配指數、共同節奏和互補空間。 */
+function drawPairTile(
+  ctx: CanvasRenderingContext2D, img: HTMLImageElement, x: number, y: number,
+  other: Cat, rows: [string, number][], locale: Locale,
+) {
+  const w = 206;
+  ctx.drawImage(img, 0, 96, 480, 368, x, y, 183, 140);
+  const nameFit = fitLines(ctx, other.name[locale], 700, 26, 18, w, 1, locale);
   ctx.font = `700 ${nameFit.size}px ${SANS}`;
   ctx.fillStyle = INK;
-  ctx.fillText(nameFit.lines[0], x, y + 196);
-  const titleFit = fitLines(ctx, title, 500, 21, 18, w, 2, locale);
+  ctx.fillText(nameFit.lines[0], x, y + 170);
+  const titleFit = fitLines(ctx, other.title[locale], 500, 21, 18, w, 2, locale);
   ctx.font = `500 ${titleFit.size}px ${SANS}`;
   ctx.fillStyle = SOFT;
-  titleFit.lines.forEach((line, i) => ctx.fillText(line, x, y + 226 + i * (titleFit.size + 5)));
+  titleFit.lines.forEach((line, i) => ctx.fillText(line, x, y + 197 + i * (titleFit.size + 4)));
+
+  let rowY = y + (locale === 'en' ? 248 : 230);
+  rows.forEach(([label, value], i) => {
+    const size = i === 0 ? 20 : 19;
+    ctx.textAlign = 'left';
+    ctx.font = `500 ${size}px ${SANS}`;
+    ctx.fillStyle = SOFT;
+    ctx.fillText(label, x, rowY);
+    ctx.textAlign = 'right';
+    ctx.font = `700 ${i === 0 ? 25 : size}px ${SANS}`;
+    ctx.fillStyle = INK;
+    ctx.fillText(String(value), x + w - 16, rowY);
+    rowY += 25;
+  });
+  ctx.textAlign = 'left';
 }
 
 export async function renderShareCard(cat: Cat, locale: Locale): Promise<Blob> {
@@ -116,6 +135,7 @@ export async function renderShareCard(cat: Cat, locale: Locale): Promise<Blob> {
   const others = groups.flatMap((g) => g.cats);
   await ensureFonts([
     name, title, quote, description, ...traits, ui.shareUrlLabel, SITE, ui.bestFriends, ui.rivals,
+    ui.compatIndex, ui.rhythm, ui.complement, '0123456789',
     ...others.flatMap((c) => [c.name[locale], c.title[locale]]),
   ].join(''));
 
@@ -191,7 +211,7 @@ export async function renderShareCard(cat: Cat, locale: Locale): Promise<Blob> {
 
   // 性格短文
   const textWidth = W - MARGIN * 2;
-  const maxLines = Math.floor((900 - textTop) / (locale === 'en' ? 36 : 45)) + 1;
+  const maxLines = Math.floor((880 - textTop) / (locale === 'en' ? 36 : 45)) + 1;
   const descFit = fitLines(ctx, description, 400, locale === 'en' ? 26 : 30, 23, textWidth, maxLines, locale);
   ctx.font = `400 ${descFit.size}px ${SANS}`;
   ctx.fillStyle = INK;
@@ -203,7 +223,7 @@ export async function renderShareCard(cat: Cat, locale: Locale): Promise<Blob> {
   }
 
   // 最佳貓友與歡喜冤家
-  const groupY = 952;
+  const groupY = 934;
   ctx.strokeStyle = INK_LINE;
   ctx.setLineDash([6, 6]);
   ctx.lineWidth = 2;
@@ -219,13 +239,16 @@ export async function renderShareCard(cat: Cat, locale: Locale): Promise<Blob> {
     ctx.fillStyle = INK;
     ctx.fillText(group.label, gx, groupY + 8);
     group.cats.forEach((other, i) => {
-      drawPairTile(ctx, thumbs[g * 2 + i], gx + i * 226, groupY + 26, other.name[locale], other.title[locale], locale);
+      const detail = compatDetail(cat.id, other.id);
+      drawPairTile(ctx, thumbs[g * 2 + i], gx + i * 226, groupY + 22, other, [
+        [ui.compatIndex, detail.score], [ui.rhythm, detail.rhythm], [ui.complement, detail.complement],
+      ], locale);
     });
   });
 
   ctx.font = `500 24px ${SANS}`;
   ctx.fillStyle = SOFT;
-  ctx.fillText(`${ui.shareUrlLabel}  ${SITE}`, MARGIN, H - 40);
+  ctx.fillText(`${ui.shareUrlLabel}  ${SITE}`, MARGIN, H - 32);
 
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error('PNG export failed'))), 'image/png');
