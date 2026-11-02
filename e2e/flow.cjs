@@ -65,7 +65,7 @@ const CODE = 'ABCDBCADCBAD';
     const c = await browser.newContext({ viewport: { width: 1024, height: 900 }, locale, acceptDownloads: true });
     const p = await c.newPage();
     await p.goto(`${BASE}#/result?v=1&a=${code}`);
-    await p.getByRole('button', { name: locale === 'en' ? 'Download PNG' : '下載 PNG' }).click();
+    await p.getByRole('button', { name: locale === 'en' ? 'Save result' : '儲存結果' }).click();
     const link = p.locator('.share-dialog a.button.primary');
     await link.waitFor();
     const [dl] = await Promise.all([p.waitForEvent('download'), link.click()]);

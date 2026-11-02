@@ -105,13 +105,19 @@ export default function Result() {
       </section>
       <CatProfile cat={cat} />
       <section className="result-actions">
-        <button type="button" className="button primary" onClick={makeImage}>{t('downloadPng')}</button>
+        <button type="button" className="button primary" onClick={makeImage}>{t('saveResult')}</button>
         <button type="button" className="button" onClick={copyLink}>{copied ? t('copied') : t('copyLink')}</button>
         <button type="button" className="button" onClick={retake}>{t('retake')}</button>
         <Link className="button" to="/cats">{t('viewCats')}</Link>
         <span className="visually-hidden" aria-live="polite">{copied ? t('copied') : ''}</span>
       </section>
-      <dialog ref={dialog} className="share-dialog" aria-labelledby="share-title">
+      <dialog
+        ref={dialog} className="share-dialog" aria-labelledby="share-title"
+        onClick={(e) => { if (e.target === dialog.current) dialog.current?.close(); }}
+      >
+        <button type="button" className="dialog-close" aria-label={t('close')} onClick={() => dialog.current?.close()}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6.5 18 17.5M17.5 6 6.5 18" /></svg>
+        </button>
         <h2 id="share-title">{t('shareTitle')}</h2>
         {share?.status === 'making' && <p role="status">{t('shareMaking')}</p>}
         {share?.status === 'failed' && <p role="alert">{t('shareFail')}</p>}
@@ -121,12 +127,9 @@ export default function Result() {
             <p className="note">{t('shareHint')}</p>
           </>
         )}
-        <div className="actions">
-          {share?.status === 'ready' && (
-            <a className="button primary" href={share.url} download={`which-cat-${cat.id}.png`}>{t('saveImage')}</a>
-          )}
-          <button type="button" className="button" onClick={() => dialog.current?.close()}>{t('close')}</button>
-        </div>
+        {share?.status === 'ready' && (
+          <a className="button primary share-save" href={share.url} download={`which-cat-${cat.id}.png`}>{t('saveImage')}</a>
+        )}
       </dialog>
     </article>
   );

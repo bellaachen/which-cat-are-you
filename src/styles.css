@@ -236,6 +236,13 @@ blockquote {
   width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 20px; color: var(--ink);
   background: var(--paper); border: 1.5px solid var(--ink); border-radius: 18px;
 }
+.share-dialog h2 { padding-right: 40px; }
+.dialog-close {
+  position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; padding: 10px;
+  background: none; border: 0; color: inherit; cursor: pointer;
+}
+.dialog-close svg { display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+.share-save { width: 100%; }
 .share-dialog::backdrop { background: rgba(64, 59, 53, 0.55); }
 .share-dialog img { width: 100%; border-radius: 10px; margin-bottom: 8px; border: 1px solid var(--line); }
 

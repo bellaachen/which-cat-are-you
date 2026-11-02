@@ -16,6 +16,6 @@
 
 ## 尚未驗證
 
-- iOS Safari 與 Android Chrome 實機下載 PNG（本環境只有 Chromium）
+- iOS Safari 已實機確認可產生分享圖；「儲存圖片」與 Android Chrome 尚待實機確認
 - 真實使用者的答案分布與角色認同度（目前數據來自窮舉與模擬）
 - 螢幕閱讀器實測（已實作語意標記，但未以輔助科技實際操作）
